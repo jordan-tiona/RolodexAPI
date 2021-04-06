@@ -10,6 +10,7 @@ gem 'puma', '~> 5.0'
 gem 'bcrypt', '~> 3.1.16'
 gem 'jwt'
 gem 'cors'
+gem 'faker'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -23,7 +24,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'faker'
+  
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
