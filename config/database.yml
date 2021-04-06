@@ -5,23 +5,23 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: mysql2
-  username: root
-  password: 123456
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
+    adapter: mysql2
+    username: bb17e2166b432d
+    password: 72482537
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+    timeout: 5000
 
 development:
-  <<: *default
-  database: rolodex
+    <<: *default
+    database: <%= ENV['CLEARDB_DATABASE_URL'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
-  database: test
+    <<: *default
+    database: test
 
 production:
-  <<: *default
-  database: rolodex
+    <<: *default
+    database: <%= ENV['CLEARDB_DATABASE_URL'] %>
