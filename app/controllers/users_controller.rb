@@ -16,7 +16,10 @@ class UsersController < ApplicationController
             token = JWT.encode({user_id: user.id}, secret, 'HS256')
             render json: {user: user, token: token, status: :ok}
         else
-            render json: {errors: 'Error creating user'}
+            if (user.errors.added?(:email, :taken))
+                render json: {errors: 'Email already in use', status: :unauthorized}
+            end
+            render json: {errors: 'Error creating user', status: :unauthorized}
         end
     end
 
